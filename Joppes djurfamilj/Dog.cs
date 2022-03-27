@@ -55,7 +55,7 @@ namespace JoppesDjurFamilj
 
     public class Puppy:Dog
     {
-        protected int _months;
+        private int _months;
         public Puppy( string name, int months) : base(name, months)
         {
             Name = name;

@@ -4,10 +4,10 @@ namespace JoppesDjurFamilj
 {
     internal class Cat : Animal
     {
-        string[] CatFavFoods = {
+        private string[] CatFavFoods = {
                 "Tuna", "Salmon", "Chicken"
             };
-        string[] CatBreeds = { 
+        private string[] CatBreeds = { 
             "Perser", "Maine Coon", "British short hair"
         };
         public Cat(string name, int age) {
