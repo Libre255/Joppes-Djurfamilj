@@ -6,7 +6,7 @@ namespace JoppesDjurFamilj
     {
         static void Main()
         {
-            PetOwner mainOwner = new PetOwner(20);
+            PetOwner mainOwner = new PetOwner();
 
             mainOwner.menu();
             

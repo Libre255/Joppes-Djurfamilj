@@ -13,9 +13,9 @@ namespace JoppesDjurFamilj
         public Cat(string name, int age) {
             Name = name;
             Age = age;
-            Hungry = new Random().Next(0, 2) == 1 ? true : false;
             Fav_Food = CatFavFoods[new Random().Next(0, 3)];
             Breed = CatBreeds[new Random().Next(0, 3)];
+            ID = 1;
         }
 
         public override int Age
@@ -43,28 +43,21 @@ namespace JoppesDjurFamilj
             if(FoundMouse)
             {
                 Hungry = false;
-                WriteLine($"The cat {Name} found a mouse and now is full!");
+                WriteLine($"*{Name} found a mouse and now is full*");
             }
             else
             {
                 Hungry = true;
-                WriteLine($"The cat {Name} couldnt find a mouse and is still hungry!");
-            }
-        }
-        public override void Interact()
-        {
-            if (Hungry)
-            {
-                WriteLine($"The Cat {Name} is hungry and dont want to play!");
-            }
-            else
-            {
-                WriteLine($"The Cat {Name} is playing laser chasing with Joppe");
+                WriteLine($"*{Name} couldnt find a mouse and is still hungry*");
             }
         }
         public override string ToString()
         {
-            return $"Cat Class, {Name}, {Age}, {Breed}, {Fav_Food}, {Hungry}";
+           return $"******* Cat Name: {Name} *********** " + "\n" +
+                  $"        Age: {Age}" + "\n" +
+                $"        Favorite Food: {Fav_Food}" + "\n" +
+                $"        Breed: {Breed}" + "\n" +
+                $"        Hungry: {Hungry}" + "\n";
         }
     }
 }

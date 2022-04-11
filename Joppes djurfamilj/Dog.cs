@@ -8,16 +8,15 @@ namespace JoppesDjurFamilj
             "Bichon frise", "Grand Danois", "Golden retriever"
         };
         protected string[] DogFavFoods = { 
-            "Mean", "Chicken", "Peanut butter"
+            "Meat", "Chicken", "Peanut butter"
         };
         public Dog(string name, int age){
             Name = name;
             Age = age;
-            Hungry = new Random().Next(0, 2) == 1 ? true : false;
             Fav_Food = DogFavFoods[new Random().Next(0, 3)];
             Breed = DogBreeds[new Random().Next(0, 3)];
+            ID = 0;
         }
-
         public override int Age
         {
             get { return _age; }
@@ -35,69 +34,14 @@ namespace JoppesDjurFamilj
             }
         }
 
-        public override void Interact()
-        {
-            if (Hungry)
-            {
-                WriteLine($"The dog {Name} is hungry and dont want to play!");
-            }
-            else
-            {
-                WriteLine($"The dog {Name} is playing fetch ball with Joppe");
-            }
-        }
-
         public override string ToString()
         {
-            return $"Dog Class, {Name}, {Age}, {Breed}, {Fav_Food}, {Hungry}";
+            return $"******* Dog Name: {Name} *********** " + "\n" +
+                   $"        Age: {Age}" + "\n" +
+                $"        Favorite Food: {Fav_Food}" + "\n" +
+                $"        Breed: {Breed}" + "\n" +
+                $"        Hungry: {Hungry}" + "\n";
         }
     }
 
-    public class Puppy:Dog
-    {
-        private int _months;
-        public Puppy( string name, int months) : base(name, months)
-        {
-            Name = name;
-            Age = 0;
-            Months = months;
-            Hungry = new Random().Next(0, 2) == 1 ? true : false;
-            Fav_Food = DogFavFoods[new Random().Next(0, 3)];
-            Breed = DogBreeds[new Random().Next(0, 3)];
-        }
-
-        public override int Months
-        {
-            get { return _months; }
-            set { 
-                if(value < 0)
-                {
-                    _months = 0;
-                }else if(value > 12)
-                {
-                    _months = 12;
-                }else
-                {
-                    _months = value;
-                }
-            }
-        }
-
-        public override void Interact()
-        {
-            if (Hungry)
-            {
-                WriteLine($"The puppy {Name} is hungry and dont want to play!");
-            }
-            else
-            {
-                WriteLine($"The puppy {Name} is playing with Joppes Hand");
-            }
-        }
-
-        public override string ToString()
-        {
-            return $"Puppy Class, {Name}, {Months}, {Breed}, {Fav_Food}, {Hungry}";
-        }
-    }
 }

@@ -2,14 +2,16 @@
 
 namespace JoppesDjurFamilj
 {
-	public abstract class Animal
+    public abstract class Animal
 	{
+        protected int _id;
 		protected int _age;
 		protected string _name = "";
 		protected string _fav_food = "";
 		protected string _breed = "";
-		protected bool _hungry;
+		protected bool _hungry = new Random().Next(0, 2) == 1 ? true : false;
 
+        public int ID { get { return _id; } set { _id = value; } }
 		public abstract int Age { get; set; }
 		public virtual int Months { get; set; }
         
@@ -35,8 +37,42 @@ namespace JoppesDjurFamilj
 			set { _breed = value; }
             get { return _breed;}
         }
-		public abstract void Interact();
-		
+		public virtual void Interact(Laser playLaser)
+        {
+            if (Hungry)
+            {
+                WriteLine($"The Cat {Name} is hungry and dont want to play!");
+            }
+            else
+            {
+                if (playLaser.Battery == 0)
+                {
+                    WriteLine("The laser doesnt have battery please recharge");
+                }
+                playLaser.lower_battery();
+                WriteLine($"The Cat {Name} is playing laser chasing with Joppe");
+            }
+        }
+		public virtual void Interact(Ball playBall)
+        {
+            if (Hungry)
+            {
+                WriteLine($"*{Name} is hungry and dont want to play!");
+            }
+            else
+            {
+                if (playBall.Quality == 0)
+                {
+                    WriteLine("*The ball is broken, need a new ball*");
+                }
+                else
+                {
+                    playBall.lower_quality(2);
+                    WriteLine($"*{Name} is playing fetch ball with Joppe*");
+                }
+            }
+        }
+
 		public void eat(string food){
 			if(food.ToLower() != Fav_Food.ToLower())
             {
