@@ -8,7 +8,7 @@ namespace JoppesDjurFamilj
                 "Tuna", "Salmon", "Chicken"
             };
         private string[] CatBreeds = { 
-            "Perser", "Maine Coon", "British short hair"
+            "Perser", "Maine", "British"
         };
         public Cat(string name, int age) {
             Name = name;

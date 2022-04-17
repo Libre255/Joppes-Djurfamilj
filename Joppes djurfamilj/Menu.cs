@@ -9,7 +9,7 @@ namespace JoppesDjurFamilj
 {
     public class Menu
     {
-        private int SelectedIndex;
+        private int SelectedIndex = 0;
         private string[] Options;
         private string Prompt;
 
@@ -17,7 +17,6 @@ namespace JoppesDjurFamilj
         {
             Prompt = prompt;
             Options = options;
-            SelectedIndex = 0;
         }
 
         private void DisplayOptions()

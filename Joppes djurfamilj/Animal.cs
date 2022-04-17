@@ -11,10 +11,10 @@ namespace JoppesDjurFamilj
 		protected string _breed = "";
 		protected bool _hungry = new Random().Next(0, 2) == 1 ? true : false;
         protected int Energy = 3;
+
         public int ID { get { return _id; } set { _id = value; } }
 		public abstract int Age { get; set; }
 		public virtual int Months { get; set; }
-        
 		public string Name
         {
 			set { _name = value; }	
@@ -25,23 +25,22 @@ namespace JoppesDjurFamilj
             set { _hungry = value; }
             get { return _hungry; }
         }
-
 		public string Fav_Food
         {
             set { _fav_food = value; }
             get { return _fav_food;}
         } 
-
 		public string Breed
         {
 			set { _breed = value; }
             get { return _breed;}
         }
+
 		public virtual void Interact(Laser playLaser)
         {
-            if (Hungry)
+            if (Hungry || Energy == 0)
             {
-                WriteLine($"{Name} is hungry and dont want to play!*");
+                WriteLine($"*{Name} is hungry and/or with no energy to play*");
             }
             else
             {
@@ -63,9 +62,9 @@ namespace JoppesDjurFamilj
         }
 		public virtual void Interact(Ball playBall)
         {
-            if (Hungry)
+            if (Hungry || Energy == 0)
             {
-                WriteLine($"*{Name} is hungry and dont want to play!*");
+                WriteLine($"*{Name} is hungry and with no energy to play*");
             }
             else
             {
@@ -96,6 +95,7 @@ namespace JoppesDjurFamilj
                 else
                 {
 				    Hungry = false;
+                    Energy = 3;
 				    WriteLine("*eated food* and is now full");
                 }
             }

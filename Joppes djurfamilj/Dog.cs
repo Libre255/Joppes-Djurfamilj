@@ -5,10 +5,10 @@ namespace JoppesDjurFamilj
     public class Dog : Animal
     {
         protected string[] DogBreeds = {
-            "Bichon frise", "Grand Danois", "Golden retriever"
+            "Bichon frise", "Grand Danois", "Golden"
         };
         protected string[] DogFavFoods = { 
-            "Meat", "Chicken", "Peanut butter"
+            "Meat", "Chicken", "Peanut"
         };
         public Dog(string name, int age){
             Name = name;

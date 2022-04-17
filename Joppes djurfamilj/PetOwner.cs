@@ -2,9 +2,10 @@
 
 namespace JoppesDjurFamilj
 {
-    public class PetOwner:Ball
+    public class PetOwner
     {
         private int AgeOwner = 35;
+        private string[] petsNames;
         private List<Animal> Pets = new List<Animal>()
         {
             new Puppy("Lopu", 10),
@@ -13,7 +14,6 @@ namespace JoppesDjurFamilj
         };
         private Ball Ball = new Ball();
         private Laser Laser = new Laser();
-        private string[] petsNames;
 
         public PetOwner()
         {
@@ -47,30 +47,30 @@ namespace JoppesDjurFamilj
 		public void Fetch()
         {
             Menu playWithPetMenu = new Menu("Which pet would you like to play with?", petsNames);
-            int SelectedPet = playWithPetMenu.Run();
-            if(Pets[SelectedPet].ID == 0)
+            int selectedPetIndex = playWithPetMenu.Run();
+            if(Pets[selectedPetIndex].ID == 0)
             {
-                Pets[SelectedPet].Interact(Ball);
-            }else if(Pets[SelectedPet].ID == 1)
+                Pets[selectedPetIndex].Interact(Ball);
+            }else if(Pets[selectedPetIndex].ID == 1)
             {
-                Pets[SelectedPet].Interact(Laser);
+                Pets[selectedPetIndex].Interact(Laser);
             }
             
         }
         public void Feed()
         {
             Menu feedPetMenu = new Menu("Select pet to feed", petsNames);
-            int selectedPet = feedPetMenu.Run();
+            int selectedPetIndex = feedPetMenu.Run();
             string userInput;
             do
             {
                 Clear();
-                WriteLine("Please write the animal food name");
+                WriteLine("Please write the favorite animal food name");
 
                 userInput = ReadLine();
                 
             } while (userInput == "" || userInput.Any(c => !char.IsLetter(c)) );
-            Pets[selectedPet].eat(userInput);
+            Pets[selectedPetIndex].eat(userInput);
         }
         public void menu()
         {

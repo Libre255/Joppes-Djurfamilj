@@ -33,9 +33,9 @@ namespace JoppesDjurFamilj
 
         public override void Interact(Ball playBall)
         {
-            if (Hungry)
+            if (Hungry || Energy == 0)
             {
-                WriteLine($"* {Name} is hungry and dont want to play *");
+                WriteLine($"*{Name} is hungry and/or with no energy to play*");
             }
             else
             {
@@ -47,6 +47,11 @@ namespace JoppesDjurFamilj
                 {
                     playBall.lower_quality();
                     WriteLine($"* {Name} is playing with Joppes ball and got a bit broken *");
+                    Energy--;
+                    if (Energy == 0)
+                    {
+                        Hungry = true;
+                    }
                 }
             }
         }
